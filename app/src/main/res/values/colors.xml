@@ -7,6 +7,12 @@
     <color name="promocion_celeste">#17C1E3</color>
     <color name="promocion_plomo">#BFBEBD</color>
     <!-- colores flat flat_ui -->
+    
+    <!-- Curiosity Color -->
+    <color name="brown">#9f5428</color>
+    <color name="blue">#597681</color>
+    <color name="green">#aa9e64</color>
+    <color name="white">#ffffff</color>
 
     <color name="color_pregunta">#4DD294</color>
     <color name="color_explora">#77CCE5</color>

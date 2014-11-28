@@ -5,7 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -47,22 +50,22 @@ public class Adapter_Lista extends BaseAdapter {
             convertView = inflater.inflate(R.layout.item_curiosidad, parent, false);
             holder = new Holder();
 
-            holder.txtname = (TextView) convertView.findViewById(R.id.txt_curiosidad);
             holder.txtnombre = (TextView) convertView.findViewById(R.id.txt_nombre_curiosidad);
+            holder.img_curiosity = (ImageView)convertView.findViewById(R.id.img_curiosity);
 
             convertView.setTag(holder);
         } else {
             holder = (Holder) convertView.getTag();
         }
 
-        holder.txtname.setText(curiosidad_DTO.getInitialCuriosidad().toUpperCase());
         holder.txtnombre.setText(curiosidad_DTO.getNameCuriosidad().toUpperCase());
+        Picasso.with(context).load(curiosidad_DTO.getImmage_url()).placeholder(R.drawable.curiosity_default).centerCrop().fit().into(holder.img_curiosity);
 
         return convertView;
     }
 
     static class Holder {
-        private TextView txtname;
         private TextView txtnombre;
+        private ImageView img_curiosity;
     }
 }

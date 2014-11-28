@@ -2,6 +2,7 @@ package me.doapps.dialogs;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,8 +41,25 @@ public class Dialog_Detail extends AlertDialog {
 
         TextView titulo = (TextView) view.findViewById(R.id.titulo);
         TextView descripcion = (TextView) view.findViewById(R.id.descripcion);
+        TextView txt_share = (TextView)view.findViewById(R.id.txt_share);
 
         titulo.setText(curiosidad_dto.getNameCuriosidad().toUpperCase());
         descripcion.setText(curiosidad_dto.getDescriptionCuriosidad());
+        txt_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent i = new Intent(Intent.ACTION_SEND);
+                    i.setType("text/plain");
+                    i.putExtra(Intent.EXTRA_SUBJECT, "Curiosidades");
+                    String sAux = "\nTe invito a descargar esta aplicación:\n\n";
+                    sAux = sAux + "https://play.google.com/store/apps/details?id=me.doapps.pondetuparte&hl=es\n\n";
+                    i.putExtra(Intent.EXTRA_TEXT, sAux);
+                    getContext().startActivity(Intent.createChooser(i, "Compartir"));
+                } catch (Exception e) {
+                    //e.toString();
+                }
+            }
+        });
     }
 }
