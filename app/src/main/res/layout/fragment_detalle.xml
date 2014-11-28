@@ -1,0 +1,39 @@
+<com.nirhart.parallaxscroll.views.ParallaxScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_blanco"
+    app:alpha_factor="1.9"
+    app:parallax_factor="1.9">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txt_curiosidad"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/verde_claro_emerald"
+            android:gravity="center"
+            android:text="L"
+            android:textColor="@color/color_blanco"
+            android:textSize="50sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/txt_descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Curiosidad"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</com.nirhart.parallaxscroll.views.ParallaxScrollView>

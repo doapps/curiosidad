@@ -6,7 +6,7 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 
 import me.doapps.beans.Curiosidad_DTO;
-import me.doapps.curiosidades.R;
+import me.doapps.curiosity.R;
 
 public class Application_Main extends Application {
 
