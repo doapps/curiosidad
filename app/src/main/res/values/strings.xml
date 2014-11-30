@@ -5,7 +5,15 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Dialog -->
+    <string name="message_internet">Por favor revise su conexión de internet!</string>
+
+    <!-- Admob Key -->
+    <string name="admob_key">ca-app-pub-8995045147204986/8006531356</string>
+    <string name="admob_interstitial">ca-app-pub-8995045147204986/1959997756</string>
+
     <!-- Parse Keys -->
-    <string name="parse_app_ip">AOq4FIaQ4Q7Y50LgYsZfUsgrxkxaVnMgmqAGgDfP</string>
-    <string name="parse_client_key">MnWoRRHbKSY7C5EETJY3efqYFlQ7T9SnlmXkdLoV</string>
+    <string name="application_id">AOq4FIaQ4Q7Y50LgYsZfUsgrxkxaVnMgmqAGgDfP</string>
+    <string name="client_key">MnWoRRHbKSY7C5EETJY3efqYFlQ7T9SnlmXkdLoV</string>
+
 </resources>

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -23,12 +24,15 @@ import me.doapps.adapter.Adapter_Lista;
 import me.doapps.beans.Curiosidad_DTO;
 import me.doapps.curiosity.Curiosity;
 import me.doapps.curiosity.R;
+import me.doapps.dialogs.Dialog_Curiosity;
 import me.doapps.dialogs.Dialog_Detail;
+import me.doapps.utils.InternetUtil;
 
 public class Fragment_Lista extends Fragment implements OnItemClickListener {
 
     private Curiosity curiosity;
     private ListView listaCuriosidad;
+    private Dialog_Curiosity dialog;
 
     public static final Fragment_Lista newInstance() {
         return new Fragment_Lista();
@@ -39,6 +43,7 @@ public class Fragment_Lista extends Fragment implements OnItemClickListener {
         super.onCreate(savedInstanceState);
         curiosity = ((Curiosity) getActivity());
         ((Curiosity) getActivity()).getSupportActionBar().show();
+        dialog =  new Dialog_Curiosity(getActivity());
     }
 
     @Override
@@ -57,36 +62,50 @@ public class Fragment_Lista extends Fragment implements OnItemClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        /**
-         * Load Intersticial
-         */
-        if (curiosity.getInterstitial().isLoaded()) {
-            curiosity.getInterstitial().show();
-        }
+        /**Internet Status**/
+        InternetUtil internet = new InternetUtil(getActivity());
+        if (!internet.isConnectingToInternet()) {
+            Dialog_Curiosity dialog = new Dialog_Curiosity(getActivity());
+            dialog.show();
+        } else {
 
-        /**
-         * Load Banner
-         */
-        loadBanner();
 
-        /**
-         * Load List
-         */
-        listaCuriosidad = (ListView) getView().findViewById(R.id.lista_curiosidades);
-        listaCuriosidad.setOnItemClickListener(this);
-
-        ParseQuery<Curiosidad_DTO> query = Curiosidad_DTO.getQuery();
-        query.findInBackground(new FindCallback<Curiosidad_DTO>() {
-
-            @Override
-            public void done(List<Curiosidad_DTO> objects, ParseException e) {
-                if (e == null) {
-                    listaCuriosidad.setAdapter(new Adapter_Lista(getActivity(), objects));
-                } else {
-                    e.printStackTrace();
-                }
+            /**
+             * Load Intersticial
+             */
+            if (curiosity.getInterstitial().isLoaded()) {
+                curiosity.getInterstitial().show();
             }
-        });
+
+            /**
+             * Load Banner
+             */
+            loadBanner();
+
+            /**
+             * Load List
+             */
+            listaCuriosidad = (ListView) getView().findViewById(R.id.lista_curiosidades);
+            listaCuriosidad.setOnItemClickListener(this);
+
+
+            ParseQuery<Curiosidad_DTO> query = Curiosidad_DTO.getQuery();
+            query.findInBackground(new FindCallback<Curiosidad_DTO>() {
+
+                @Override
+                public void done(List<Curiosidad_DTO> objects, ParseException e) {
+                    if (e == null) {
+                        (getView().findViewById(R.id.loading_curiosity)).setVisibility(View.GONE);
+                        listaCuriosidad.setVisibility(View.VISIBLE);
+                        listaCuriosidad.setAdapter(new Adapter_Lista(getActivity(), objects));
+                    } else {
+                        e.printStackTrace();
+                        dialog.show();
+                    }
+                }
+            });
+
+        }
     }
 
     @Override

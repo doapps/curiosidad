@@ -39,6 +39,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:text="Descripcion"
+        android:gravity="center"
         android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_gravity="center" />

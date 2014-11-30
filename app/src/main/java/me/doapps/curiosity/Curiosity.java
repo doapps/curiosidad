@@ -75,7 +75,7 @@ public class Curiosity extends ActionBarActivity {
 
     private void loadIntersticial() {
         interstitial = new InterstitialAd(this);
-        interstitial.setAdUnitId("ca-app-pub-8995045147204986/1959997756");
+        interstitial.setAdUnitId(getResources().getString(R.string.admob_interstitial));
         AdRequest adRequest = new AdRequest.Builder().build();
         interstitial.loadAd(adRequest);
     }
