@@ -9,8 +9,8 @@
     <string name="message_internet">Por favor revise su conexión de internet!</string>
 
     <!-- Admob Key -->
-    <string name="admob_key">ca-app-pub-8995045147204986/8006531356</string>
-    <string name="admob_interstitial">ca-app-pub-8995045147204986/1959997756</string>
+    <string name="admob_key"> ca-app-pub-3327434500093559/4380533427</string>
+    <string name="admob_interstitial">ca-app-pub-3327434500093559/7333999824</string>
 
     <!-- Parse Keys -->
     <string name="application_id">AOq4FIaQ4Q7Y50LgYsZfUsgrxkxaVnMgmqAGgDfP</string>

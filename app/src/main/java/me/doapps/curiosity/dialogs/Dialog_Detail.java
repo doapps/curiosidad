@@ -1,4 +1,4 @@
-package me.doapps.dialogs;
+package me.doapps.curiosity.dialogs;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,10 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import me.doapps.beans.Curiosidad_DTO;
-import me.doapps.curiosity.Curiosity;
+import me.doapps.curiosity.beans.Curiosidad_DTO;
 import me.doapps.curiosity.R;
-import me.doapps.utils.UtilFonts;
+import me.doapps.curiosity.utils.UtilFonts;
 
 /**
  * Created by Gantz on 28/11/14.
@@ -21,15 +20,15 @@ public class Dialog_Detail extends AlertDialog {
     private Curiosidad_DTO curiosidad_dto;
     private ActionBarActivity actionBarActivity;
 
-    public Dialog_Detail(Context context, ActionBarActivity actionBarActivity) {
+    public Dialog_Detail(Context context, Curiosidad_DTO curiosidad_dto) {
         super(context);
-        this.actionBarActivity = actionBarActivity;
+        this.curiosidad_dto = curiosidad_dto;
         initDialog();
     }
 
-    public Dialog_Detail(Context context, ActionBarActivity actionBarActivity, int theme) {
+    public Dialog_Detail(Context context, Curiosidad_DTO curiosidad_dto, int theme) {
         super(context, theme);
-        this.actionBarActivity = actionBarActivity;
+        this.curiosidad_dto = curiosidad_dto;
         initDialog();
     }
 
@@ -37,8 +36,6 @@ public class Dialog_Detail extends AlertDialog {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         final View view = inflater.inflate(R.layout.dialog_detail, null);
         setView(view);
-
-        curiosidad_dto = ((Curiosity) actionBarActivity).getCuriosidad_DTO();
 
         TextView titulo = (TextView) view.findViewById(R.id.titulo);
         TextView descripcion = (TextView) view.findViewById(R.id.descripcion);

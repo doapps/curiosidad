@@ -1,4 +1,4 @@
-package me.doapps.beans;
+package me.doapps.curiosity.beans;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;

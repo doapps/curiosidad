@@ -1,4 +1,4 @@
-package me.doapps.dialogs;
+package me.doapps.curiosity.dialogs;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import me.doapps.curiosity.R;
-import me.doapps.utils.UtilFonts;
+import me.doapps.curiosity.utils.UtilFonts;
 
 /**
  * Created by jonathan on 30/11/2014.

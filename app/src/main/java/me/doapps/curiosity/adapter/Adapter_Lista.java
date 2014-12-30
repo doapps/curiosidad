@@ -1,4 +1,4 @@
-package me.doapps.adapter;
+package me.doapps.curiosity.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import me.doapps.beans.Curiosidad_DTO;
+import me.doapps.curiosity.beans.Curiosidad_DTO;
 import me.doapps.curiosity.R;
 
 public class Adapter_Lista extends BaseAdapter {

@@ -1,4 +1,4 @@
-package me.doapps.utils;
+package me.doapps.curiosity.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
