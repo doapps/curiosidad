@@ -1,16 +1,15 @@
-package me.doapps.curiosity.dialogs;
+package me.doapps.curiosidad.dialogs;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import me.doapps.curiosity.beans.Curiosidad_DTO;
-import me.doapps.curiosity.R;
-import me.doapps.curiosity.utils.UtilFonts;
+import me.doapps.curiosidad.beans.Curiosidad_DTO;
+import me.doapps.curiosidad.R;
+import me.doapps.curiosidad.utils.UtilFonts;
 
 /**
  * Created by Gantz on 28/11/14.
@@ -39,15 +38,15 @@ public class Dialog_Detail extends AlertDialog {
 
         TextView titulo = (TextView) view.findViewById(R.id.titulo);
         TextView descripcion = (TextView) view.findViewById(R.id.descripcion);
-        TextView txt_share = (TextView)view.findViewById(R.id.txt_share);
+        //TextView txt_share = (TextView)view.findViewById(R.id.txt_share);
 
         titulo.setTypeface(UtilFonts.setHelveticaBold(getContext()));
         descripcion.setTypeface(UtilFonts.setHelveticaThin(getContext()));
-        txt_share.setTypeface(UtilFonts.setHelveticaMedium(getContext()));
+        //txt_share.setTypeface(UtilFonts.setHelveticaMedium(getContext()));
 
         titulo.setText(curiosidad_dto.getNameCuriosidad().toUpperCase());
         descripcion.setText(curiosidad_dto.getDescriptionCuriosidad());
-        txt_share.setOnClickListener(new View.OnClickListener() {
+        /*txt_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
@@ -62,6 +61,6 @@ public class Dialog_Detail extends AlertDialog {
                     //e.toString();
                 }
             }
-        });
+        });*/
     }
 }

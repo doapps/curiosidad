@@ -1,4 +1,4 @@
-package me.doapps.curiosity.adapter;
+package me.doapps.curiosidad.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import me.doapps.curiosity.beans.Curiosidad_DTO;
-import me.doapps.curiosity.R;
+import me.doapps.curiosidad.beans.Curiosidad_DTO;
+import me.doapps.curiosidad.R;
 
 public class Adapter_Lista extends BaseAdapter {
 
@@ -59,7 +59,7 @@ public class Adapter_Lista extends BaseAdapter {
         }
 
         holder.txtnombre.setText(curiosidad_DTO.getNameCuriosidad().toUpperCase());
-        Picasso.with(context).load(curiosidad_DTO.getImmage_url()).placeholder(R.drawable.curiosity_default).centerCrop().fit().into(holder.img_curiosity);
+        Picasso.with(context).load(curiosidad_DTO.getImage_url()).placeholder(R.drawable.curiosity_default).centerCrop().fit().into(holder.img_curiosity);
 
         return convertView;
     }

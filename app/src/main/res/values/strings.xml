@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Curiosity</string>
+    <string name="app_name">Curiosidad</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- MainActivity -->
+    <string name="search">Buscar ...</string>
 
     <!-- Dialog -->
     <string name="message_internet">Por favor revise su conexión de internet!</string>

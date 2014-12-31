@@ -1,33 +1,48 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="me.doapps.curiosity.fragments.Fragment_Lista"
-    android:orientation="vertical">
-
-    <ListView
-        android:visibility="gone"
-        android:id="@+id/lista_curiosidades"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:listSelector="@android:color/transparent"
-        android:divider="@null"
-        android:dividerHeight="0dp"
-        android:layout_marginBottom="50dp"></ListView>
+    android:orientation="vertical"
+    tools:context="me.doapps.curiosidad.fragments.Fragment_Lista">
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        ads:adUnitId="@string/admob_key"
+        android:layout_gravity="center_horizontal|bottom"
         ads:adSize="BANNER"
-        android:layout_gravity="center_horizontal|bottom" />
+        ads:adUnitId="@string/admob_key" />
 
     <ProgressBar
+        android:id="@+id/loading_curiosity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/loading_curiosity"
         android:layout_gravity="center" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical">
+
+        <AutoCompleteTextView
+            android:id="@+id/edt_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/search"
+            android:hint="@string/search"
+            android:padding="10dp" />
+
+        <ListView
+            android:id="@+id/lista_curiosidades"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@null"
+            android:dividerHeight="0dp"
+            android:listSelector="@android:color/transparent"></ListView>
+    </LinearLayout>
+
 
 </FrameLayout>

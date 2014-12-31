@@ -1,4 +1,4 @@
-package me.doapps.curiosity;
+package me.doapps.curiosidad;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
