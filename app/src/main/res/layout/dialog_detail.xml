@@ -2,7 +2,7 @@
 
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:layout_width="match_parent"
@@ -26,6 +26,7 @@
         android:background="@color/brown">
 
         <ImageView
+            android:id="@+id/img_facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -33,6 +34,7 @@
             android:src="@drawable/ic_facebook"/>
 
         <ImageView
+            android:id="@+id/img_twitter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -40,6 +42,7 @@
             android:src="@drawable/ic_twitter"/>
 
         <ImageView
+            android:id="@+id/img_whatsapp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -47,6 +50,7 @@
             android:src="@drawable/ic_whatsapp"/>
 
         <ImageView
+            android:id="@+id/img_share"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
@@ -54,18 +58,44 @@
             android:src="@drawable/ic_social_share"/>
 
     </LinearLayout>
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/descripcion"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Descripcion"
+        android:layout_height="410dp"
+        android:orientation="vertical"
         android:gravity="center"
-        android:padding="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_gravity="center" />
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:lines="3"
+            android:id="@+id/descripcion"
+            android:text="Descripcion"
+            android:gravity="center"
+            android:padding="5dp"
+            />
+        <ImageView
+            android:id="@+id/img_photo"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:scaleType="centerCrop"
+            android:layout_margin="10dp"
+            android:src="@drawable/curiosity_default"/>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/txt_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="url"/>
+
+        </LinearLayout>
+
 
 </FrameLayout>

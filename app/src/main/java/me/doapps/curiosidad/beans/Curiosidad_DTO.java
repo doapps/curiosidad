@@ -13,7 +13,9 @@ public class Curiosidad_DTO extends ParseObject {
     public String initialCuriosidad;
     public String nameCuriosidad;
     public String descriptionCuriosidad;
-    public String immage_url;
+    public String image_url;
+    public String photo;
+    public String url;
 
 
     public String getInitialCuriosidad() {
@@ -48,6 +50,20 @@ public class Curiosidad_DTO extends ParseObject {
     }
     public void setId(String id){
         put("objectId", id);
+    }
+
+    public String getPhoto(){
+        return getString("photo");
+    }
+    public void setPhoto(String photo){
+        put("photo", photo);
+    }
+
+    public String getUrl(){
+        return getString("url");
+    }
+    public void setUrl(String url){
+        put("url", url);
     }
 
 

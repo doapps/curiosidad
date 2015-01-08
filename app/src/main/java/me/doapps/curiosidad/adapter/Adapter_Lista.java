@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import me.doapps.curiosidad.beans.Curiosidad_DTO;
@@ -18,10 +19,10 @@ import me.doapps.curiosidad.R;
 public class Adapter_Lista extends BaseAdapter {
 
     private Context context;
-    private List<Curiosidad_DTO> curiosidads;
+    private ArrayList<Curiosidad_DTO> curiosidads;
     private LayoutInflater inflater;
 
-    public Adapter_Lista(Context context, List<Curiosidad_DTO> curiosidads) {
+    public Adapter_Lista(Context context, ArrayList<Curiosidad_DTO> curiosidads) {
         this.context = context;
         this.curiosidads = curiosidads;
         this.inflater = LayoutInflater.from(context);

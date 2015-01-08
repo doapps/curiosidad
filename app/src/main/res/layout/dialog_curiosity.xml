@@ -21,4 +21,12 @@
         android:textSize="18sp"
         android:text="@string/message_internet"/>
 
+    <Button
+        android:id="@+id/btn_accept"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/holo_flat_button_azul_claro"
+        android:textColor="@color/white"
+        android:text="@string/accept"/>
+
 </LinearLayout>

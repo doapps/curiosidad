@@ -10,13 +10,14 @@
 
     <!-- Dialog -->
     <string name="message_internet">Por favor revise su conexión de internet!</string>
+    <string name="accept">Aceptar</string>
 
     <!-- Admob Key -->
     <string name="admob_key"> ca-app-pub-3327434500093559/4380533427</string>
     <string name="admob_interstitial">ca-app-pub-3327434500093559/7333999824</string>
 
     <!-- Parse Keys -->
-    <string name="application_id">AOq4FIaQ4Q7Y50LgYsZfUsgrxkxaVnMgmqAGgDfP</string>
-    <string name="client_key">MnWoRRHbKSY7C5EETJY3efqYFlQ7T9SnlmXkdLoV</string>
+    <string name="application_id">RQLXNVJzhIfa7jFEz4iUQ7i9bDJlLdLTsaoAAA6x</string>
+    <string name="client_key">DTOtC2cQa7yCTNWskSRnb41VpEOEK1Ykun4Twj99</string>
 
 </resources>

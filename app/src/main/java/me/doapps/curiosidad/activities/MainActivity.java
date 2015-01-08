@@ -3,9 +3,12 @@ package me.doapps.curiosidad.activities;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -42,6 +45,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     private Timer timer;
 
     private AutoCompleteTextView edt_search;
+    private TextView edt_cancel;
     private Curiosity_DTO curiosity_dto;
     private ArrayList<Curiosity_DTO> curiosity_dtos;
     private List<Curiosidad_DTO> curiosidad_dtos = null;
@@ -54,20 +58,6 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         loadBanner();
         loadIntersticial();
 
-        /*timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                       loadIntersticial();
-                       getInterstitial().show();
-                       Toast.makeText(MainActivity.this, "toast", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        }, 0, TIME_INTERVAL);*/
 
         /**Internet Status**/
         InternetUtil internet = new InternetUtil(MainActivity.this);
@@ -75,6 +65,14 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         if (!internet.isConnectingToInternet()) {
             Dialog_Curiosity dialog = new Dialog_Curiosity(MainActivity.this);
             dialog.show();
+            dialog.setInterface_close(new Dialog_Curiosity.Interface_Close() {
+                @Override
+                public void getClose(boolean flag) {
+                    if(flag){
+                        finish();
+                    }
+                }
+            });
         } else {
             /**
              * Load List
@@ -87,6 +85,18 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
             edt_search = (AutoCompleteTextView)findViewById(R.id.edt_search);
             edt_search.setThreshold(0);
 
+            edt_cancel = (TextView)findViewById(R.id.edt_cancel);
+
+            edt_cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    edt_cancel.setVisibility(View.GONE);
+                    edt_search.setVisibility(View.VISIBLE);
+                    edt_search.setText("");
+                    listaCuriosidad.setAdapter(new Adapter_Lista(MainActivity.this, (ArrayList<Curiosidad_DTO>) curiosidad_dtos));
+                }
+            });
+
 
             ParseQuery<Curiosidad_DTO> query = Curiosidad_DTO.getQuery();
             query.findInBackground(new FindCallback<Curiosidad_DTO>() {
@@ -98,7 +108,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
                         (findViewById(R.id.loading_curiosity)).setVisibility(View.GONE);
                         listaCuriosidad.setVisibility(View.VISIBLE);
-                        listaCuriosidad.setAdapter(new Adapter_Lista(MainActivity.this, objects));
+                        listaCuriosidad.setAdapter(new Adapter_Lista(MainActivity.this, (ArrayList<Curiosidad_DTO>) objects));
 
                         curiosity_dtos = new ArrayList<Curiosity_DTO>();
                         for (int i = 0; i < objects.size(); i++) {
@@ -119,13 +129,19 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
                     curiosity_dto = (Curiosity_DTO)parent.getItemAtPosition(position);
                     edt_search.setText(curiosity_dto.getNameCuriosidad());
 
-                    List<Curiosidad_DTO> temp_curiosidad_dtos = null;
+                    ArrayList<Curiosidad_DTO> temp_curiosidad_dtos = new ArrayList<Curiosidad_DTO>();
                     for (int i = 0; i < curiosidad_dtos.size(); i++) {
                         if(curiosidad_dtos.get(i).getNameCuriosidad().toUpperCase().equals(curiosity_dto.getNameCuriosidad().toUpperCase())){
                             temp_curiosidad_dtos.add(curiosidad_dtos.get(i));
                         }
                     }
                     listaCuriosidad.setAdapter(new Adapter_Lista(MainActivity.this, temp_curiosidad_dtos));
+                    (findViewById(R.id.edt_search)).setVisibility(View.GONE);
+                    (findViewById(R.id.edt_cancel)).setVisibility(View.VISIBLE);
+                    ((TextView)findViewById(R.id.edt_cancel)).setText(curiosity_dto.getNameCuriosidad());
+
+                    InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(edt_search.getWindowToken(), 0);
                 }
             });
 
@@ -134,6 +150,7 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         Curiosidad_DTO curiosidad_DTO = (Curiosidad_DTO) parent.getItemAtPosition(position);
 
         /**
@@ -142,14 +159,18 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         Dialog_Detail dialog_detail = new Dialog_Detail(MainActivity.this, curiosidad_DTO);
         dialog_detail.getWindow().setWindowAnimations(R.style.Dialog_Animation_UP_DOWN);
         dialog_detail.show();
+
+        /**verify interstitial**/
+        getInterstitial().show();
+        loadIntersticial();
     }
 
     @Override
     public void onBackPressed() {
-            if (getInterstitial().isLoaded()) {
-                getInterstitial().show();
-            }
-            super.onBackPressed();
+        /*if (getInterstitial().isLoaded()) {
+            getInterstitial().show();
+        }*/
+        super.onBackPressed();
     }
 
     private void loadIntersticial() {
